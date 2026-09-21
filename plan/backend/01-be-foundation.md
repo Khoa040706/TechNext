@@ -14,42 +14,42 @@
 Không tạo Node/Express backend thứ hai.
 
 ## Architecture
-- [ ] FastAPI app
-- [ ] Route/controller layer
-- [ ] Service/domain layer
-- [ ] Repository/data layer
-- [ ] Pydantic validation layer
-- [ ] Supabase JWT auth dependency
-- [ ] Role authorization dependency
-- [ ] Error middleware
-- [ ] Logging
-- [ ] Config/env handling
-- [ ] SQLAlchemy session management
-- [ ] Alembic initialized
+- [x] FastAPI app
+- [x] Route/controller layer
+- [x] Service/domain layer
+- [x] Repository/data layer
+- [x] Pydantic validation layer
+- [x] Supabase JWT auth dependency
+- [x] Role authorization dependency
+- [x] Error middleware
+- [x] Logging
+- [x] Config/env handling
+- [x] SQLAlchemy session management
+- [x] Alembic initialized
 
 ## API standards
-- [ ] Consistent JSON response
-- [ ] Error code
-- [ ] Error message
-- [ ] Validation details
-- [ ] Request ID nếu dùng
-- [ ] Pagination standard
-- [ ] ISO 8601 timestamps
+- [x] Consistent JSON response
+- [x] Error code
+- [x] Error message
+- [x] Validation details
+- [x] Request ID nếu dùng
+- [x] Pagination standard
+- [x] ISO 8601 timestamps
 
 ## Security
-- [ ] Không tự lưu password
-- [ ] Verify Supabase bearer token
-- [ ] Role authorization ở backend
-- [ ] Input validation
-- [ ] Secret via environment
-- [ ] CORS policy
-- [ ] Rate limit cho sensitive endpoints nếu phù hợp
-- [ ] Service role key không xuất hiện ở frontend
+- [x] Không tự lưu password
+- [x] Verify Supabase bearer token
+- [x] Role authorization ở backend
+- [x] Input validation
+- [x] Secret via environment
+- [x] CORS policy
+- [x] Rate limit cho sensitive endpoints nếu phù hợp
+- [x] Service role key không xuất hiện ở frontend
 
 ## Tests
-- [ ] Health endpoint
-- [ ] Validation unit test
-- [ ] JWT auth dependency test
-- [ ] Role authorization test
-- [ ] Global error handling
-- [ ] DB session test
+- [x] Health endpoint
+- [x] Validation unit test
+- [x] JWT auth dependency test
+- [x] Role authorization test
+- [x] Global error handling
+- [x] DB session test
