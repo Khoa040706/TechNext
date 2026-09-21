@@ -54,11 +54,11 @@ class NotFoundError(AppException):
 
 
 class ValidationError(AppException):
-    def __init__(self, message: str = "Dữ liệu không hợp lệ", details: Optional[Dict[str, Any]] = None):
+    def __init__(self, message: str = "Dữ liệu không hợp lệ", code: str = "VALIDATION_ERROR", details: Optional[Dict[str, Any]] = None):
         super().__init__(
             message=message,
-            code="VALIDATION_ERROR",
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            code=code,
+            status_code=422,
             details=details,
         )
 
@@ -95,7 +95,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         request_id=get_request_id(request),
         timestamp=datetime.now(timezone.utc),
     )
-    return JSONResponse(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, content=payload.model_dump(mode="json"))
+    return JSONResponse(status_code=422, content=payload.model_dump(mode="json"))
 
 
 async def http_exception_handler(request: Request, exc: StarletteHTTPException) -> JSONResponse:

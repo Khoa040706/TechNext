@@ -1,7 +1,12 @@
 from fastapi import APIRouter
-from app.api.v1.endpoints import health, auth_check
+from app.api.v1.endpoints import health, auth_check, users, topics, skills, lessons
 
 api_router = APIRouter()
 
 api_router.include_router(health.router, tags=["Health"])
 api_router.include_router(auth_check.router, prefix="/auth", tags=["Auth Check"])
+api_router.include_router(users.router, prefix="/users", tags=["Users"])
+api_router.include_router(users.router, tags=["Users"])  # Provides /api/v1/me
+api_router.include_router(topics.router, prefix="/topics", tags=["Topics"])
+api_router.include_router(skills.router, prefix="/skills", tags=["Skills"])
+api_router.include_router(lessons.router, prefix="/lessons", tags=["Lessons"])

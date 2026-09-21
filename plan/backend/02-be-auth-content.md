@@ -1,31 +1,31 @@
 # BE-02 – Auth & Learning Content APIs
 
 ## Auth / Identity Integration
-- [ ] Verify Supabase JWT
-- [ ] Current user endpoint
-- [ ] Profile provisioning strategy
-- [ ] Role lookup
-- [ ] Role check
-- [ ] Handle disabled/invalid user
-- [ ] Không implement password login trong FastAPI
+- [x] Verify Supabase JWT
+- [x] Current user endpoint
+- [x] Profile provisioning strategy
+- [x] Role lookup
+- [x] Role check
+- [x] Handle disabled/invalid user
+- [x] Không implement password login trong FastAPI
 
 ## Topic / Concept / Skill
-- [ ] Create
-- [ ] Read
-- [ ] Update
-- [ ] Delete/archive
-- [ ] Prerequisite relation
-- [ ] Cycle prevention
+- [x] Create
+- [x] Read
+- [x] Update
+- [x] Delete/archive
+- [x] Prerequisite relation
+- [x] Cycle prevention
 
 ## Lesson
-- [ ] Create/update
-- [ ] Publish state
-- [ ] List by topic
-- [ ] Access rules
+- [x] Create/update
+- [x] Publish state
+- [x] List by topic
+- [x] Access rules
 
 ## Tests
-- [ ] Valid/invalid Supabase token
-- [ ] Role permission
-- [ ] Topic CRUD
-- [ ] Duplicate/invalid input
-- [ ] Skill prerequisite cycle
+- [x] Valid/invalid Supabase token
+- [x] Role permission
+- [x] Topic CRUD
+- [x] Duplicate/invalid input
+- [x] Skill prerequisite cycle
