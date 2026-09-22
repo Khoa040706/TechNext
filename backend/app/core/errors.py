@@ -63,6 +63,16 @@ class ValidationError(AppException):
         )
 
 
+class ConflictError(AppException):
+    def __init__(self, message: str = "Xung đột dữ liệu", code: str = "CONFLICT_ERROR", details: Optional[Dict[str, Any]] = None):
+        super().__init__(
+            message=message,
+            code=code,
+            status_code=status.HTTP_409_CONFLICT,
+            details=details,
+        )
+
+
 def get_request_id(request: Request) -> Optional[str]:
     return getattr(request.state, "request_id", None) or request.headers.get("X-Request-ID")
 

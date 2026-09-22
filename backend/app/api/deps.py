@@ -7,7 +7,7 @@ from app.core.errors import AuthenticationError, PermissionDeniedError
 from app.schemas.auth import UserPayload
 from app.db.session import get_db
 from app.repositories.user_repo import UserRepository
-from app.models.user import Profile
+from app.models.user import Profile, Student
 
 security_scheme = HTTPBearer(auto_error=False)
 
@@ -60,4 +60,14 @@ def require_roles(allowed_roles: List[str]) -> Callable[[UserPayload], UserPaylo
         return current_user
     
     return role_checker
+
+
+def get_current_student(
+    current_user: UserPayload = Depends(require_roles(["student"])),
+    db: Session = Depends(get_db),
+) -> Student:
+    """Dependency lấy thực thể Student tương ứng với student user hiện tại"""
+    student = UserRepository.ensure_student_for_profile(db, current_user.user_id)
+    return student
+
 

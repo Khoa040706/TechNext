@@ -76,3 +76,22 @@ class UserRepository:
         db.commit()
         db.refresh(profile)
         return profile
+
+    @staticmethod
+    def get_student_by_profile_id(db: Session, profile_id: str) -> Optional[Student]:
+        stmt = select(Student).where(Student.profile_id == profile_id)
+        return db.scalars(stmt).first()
+
+    @staticmethod
+    def ensure_student_for_profile(db: Session, profile_id: str) -> Student:
+        student = UserRepository.get_student_by_profile_id(db, profile_id)
+        if not student:
+            research_id = f"stu_{uuid.uuid4().hex[:10]}"
+            student = Student(
+                profile_id=profile_id,
+                research_id=research_id,
+            )
+            db.add(student)
+            db.commit()
+            db.refresh(student)
+        return student
