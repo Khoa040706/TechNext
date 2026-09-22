@@ -11,6 +11,11 @@ from app.models.assessment import (
     TestResult,
     LearningEvidence,
 )
+from app.models.mastery import (
+    SkillMastery,
+    LearningPath,
+    LearningPathItem,
+)
 
 __all__ = [
     "Profile",
@@ -29,4 +34,7 @@ __all__ = [
     "Submission",
     "TestResult",
     "LearningEvidence",
+    "SkillMastery",
+    "LearningPath",
+    "LearningPathItem",
 ]

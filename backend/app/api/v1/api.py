@@ -8,6 +8,8 @@ from app.api.v1.endpoints import (
     lessons,
     quizzes,
     exercises,
+    mastery,
+    learning_path,
 )
 
 api_router = APIRouter()
@@ -21,3 +23,5 @@ api_router.include_router(skills.router, prefix="/skills", tags=["Skills"])
 api_router.include_router(lessons.router, prefix="/lessons", tags=["Lessons"])
 api_router.include_router(quizzes.router, prefix="/quizzes", tags=["Quizzes"])
 api_router.include_router(exercises.router, prefix="/exercises", tags=["Coding Exercises"])
+api_router.include_router(mastery.router, prefix="/mastery", tags=["Mastery"])
+api_router.include_router(learning_path.router, prefix="/learning-path", tags=["Learning Path"])

@@ -98,6 +98,12 @@ class ExerciseService:
             },
         )
 
+        # Trigger Internal Mastery & Adaptive Hooks
+        from app.services.mastery_service import MasteryService
+        from app.services.adaptive_service import AdaptiveService
+        MasteryService.recompute_mastery(db, student_id=student_id, skill_id=exercise.skill_id)
+        AdaptiveService.generate_or_update_learning_path(db, student_id=student_id)
+
         logger.info(
             f"Student '{student_id}' nộp bài '{exercise.slug}', lần {attempt_number}: status={status} "
             f"({payload.passed_tests}/{payload.total_tests} passed, source={submission.execution_source}, "
