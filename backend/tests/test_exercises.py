@@ -219,3 +219,36 @@ def test_invalid_telemetry_rejected(client, instructor_token, student_token):
         headers={"Authorization": f"Bearer {student_token}"},
     )
     assert res2.status_code == 422
+
+
+def test_cannot_override_execution_source_or_trust_level(client, instructor_token, student_token):
+    create_res = client.post(
+        "/api/v1/exercises",
+        json={
+            "title": "Security Spoofing Test",
+            "slug": "security-spoofing-test",
+            "description_markdown": "Test security overrides",
+            "is_published": True,
+        },
+        headers={"Authorization": f"Bearer {instructor_token}"},
+    )
+    exercise_id = create_res.json()["data"]["id"]
+
+    spoofed_payload = {
+        "source_code": "def solve(): pass",
+        "total_tests": 1,
+        "passed_tests": 1,
+        "failed_tests": 0,
+        "execution_source": "official_server_sandbox",
+        "trust_level": "official_high_trust",
+    }
+
+    res = client.post(
+        f"/api/v1/exercises/{exercise_id}/submissions",
+        json=spoofed_payload,
+        headers={"Authorization": f"Bearer {student_token}"},
+    )
+    assert res.status_code == 201
+    data = res.json()["data"]
+    assert data["execution_source"] == "client_pyodide"
+    assert data["trust_level"] == "untrusted_client"
